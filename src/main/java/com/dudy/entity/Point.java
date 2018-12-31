@@ -19,13 +19,15 @@ public class Point {
     private String name;
 
     @Column(name = "wysokosc")
+    @NotNull(message = "is required")
     private int height;
 
     @Column(name = "dl_geo")
-
+    @NotNull(message = "is required")
     private double longitude;
 
     @Column(name = "szer_geo")
+    @NotNull(message = "is required")
     private double latitude;
 
     @Column(name = "opis")
