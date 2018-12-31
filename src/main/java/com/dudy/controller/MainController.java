@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 /**
@@ -47,18 +49,24 @@ public String index()
 }
 @GetMapping
 @RequestMapping(value = "/new-point", method = RequestMethod.GET)
-public String newPoint(Model model)
-{
+public String newPoint(Model model) {
     Point thePoint = new Point();
     ArrayList<Region> regions = (ArrayList<Region>) regionRepository.findAll();
     model.addAttribute("regions", regions);
     model.addAttribute("point", thePoint);
     return "point-form";
 }
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        NumberFormatUtil.registerDoubleFormat(binder);
+    }
     @RequestMapping(value = "/savePoint", method = RequestMethod.POST)
-    public String processForm(@ModelAttribute Point point, BindingResult errors, Model model){
+    public String processForm(@Valid @ModelAttribute Point point, BindingResult errors){
+        System.out.println(errors.hasErrors());
+        if (errors.hasErrors())
+            return "point-form";
         pointRepository.save(point);
-        return "index";
+        return "redirect:/";
     }
 
 }

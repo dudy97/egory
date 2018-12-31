@@ -1,6 +1,8 @@
 package com.dudy.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,13 +15,15 @@ public class Point {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "nazwa")
+
     @NotNull(message = "is required")
-    @Size(min=1)
+    @NotBlank
+    @Column(name = "nazwa")
     private String name;
 
     @Column(name = "wysokosc")
     @NotNull(message = "is required")
+    @Min(0)
     private int height;
 
     @Column(name = "dl_geo")

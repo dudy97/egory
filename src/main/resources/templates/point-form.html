@@ -10,6 +10,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
     <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        p{
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <h1>Point form</h1>
@@ -17,15 +22,17 @@
     <table class="table table-striped" border="1" >
         <tr>
             <td><label th:text="Nazwa" /></td>
-            <td><input type="text" th:field="*{name}" /></td>
+            <td><input type="text" th:field="*{name}" /> <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+            </td>
         </tr>
         <tr>
             <td><label th:text="Wysokosc" /></td>
-            <td><input type="text" th:field="*{height}" /></td>
+            <td><input type="text" th:field="*{height}" /> <p th:if="${#fields.hasErrors('height')}" th:errors="*{height}" >Name Error</p></td>
+
         </tr>
         <tr>
             <td><label th:text="Dlgeo" /></td>
-            <td><input type="text" th:field="*{longitude}" placeholder="test"/></td>
+            <td><input type="text" th:field="*{longitude}"/><p th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}" style="color: red">Name Error</p></td>
         </tr>
         <tr>
             <td><label th:text="Szergeo" /></td>
