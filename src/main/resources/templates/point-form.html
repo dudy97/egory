@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Point form</h1>
+<form action="#" th:action="@{/demo/savePoint}" th:object="${point}" method="post">
+    <table border="1">
+        <tr>
+            <td><label th:text="Nazwa" /></td>
+            <td><input type="text" th:field="*{name}" /></td>
+        </tr>
+        <tr>
+            <td><label th:text="Wysokosc" /></td>
+            <td><input type="text" th:field="*{height}" /></td>
+        </tr>
+        <tr>
+            <td><label th:text="Dlgeo" /></td>
+            <td><input type="text" th:field="*{longitude}" /></td>
+        </tr>
+        <tr>
+            <td><label th:text="Szergeo" /></td>
+            <td><input type="text" th:field="*{latitude}" /></td>
+        </tr>
+        <tr>
+            <td><label th:text="Opis" /></td>
+            <td><input type="text" th:field="*{description}" /></td>
+        </tr>
+        <tr>
+            <td><label th:text="Region" /></td>
+            <td>
+            <select th:field="*{region}" id="dropOperator">
+                <option value="0">Select region</option>
+                <option th:each="region : ${regions}" th:value="${region.id}" th:text="${region.name}"></option>
+            </select>
+            </td>
+        </tr>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
