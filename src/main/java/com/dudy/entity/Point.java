@@ -1,10 +1,9 @@
 package com.dudy.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by admin on 12.12.2018.
@@ -28,10 +27,14 @@ public class Point {
 
     @Column(name = "dl_geo")
     @NotNull(message = "is required")
+    @Min(-180)
+    @Max(180)
     private double longitude;
 
     @Column(name = "szer_geo")
     @NotNull(message = "is required")
+    @Min(-90)
+    @Max(90)
     private double latitude;
 
     @Column(name = "opis")
@@ -40,6 +43,12 @@ public class Point {
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     @JoinColumn(name = "region_id")
     private Region region;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @JoinTable(name = "PunktyTrasy",
+            joinColumns = @JoinColumn(name="idP"),
+            inverseJoinColumns = @JoinColumn(name = "idT"))
+    private List<Route> routes = new ArrayList<>();
 
     public Point() {
     }
@@ -115,6 +124,14 @@ public class Point {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
     }
 
     @Override

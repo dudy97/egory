@@ -22,21 +22,21 @@
     <table class="table table-striped" border="1" >
         <tr>
             <td><label th:text="Nazwa" /></td>
-            <td><input type="text" th:field="*{name}" /> <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+            <td><input type="text" th:field="*{name}" /> <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
             </td>
         </tr>
         <tr>
             <td><label th:text="Wysokosc" /></td>
-            <td><input type="text" th:field="*{height}" /> <p th:if="${#fields.hasErrors('height')}" th:errors="*{height}" >Name Error</p></td>
+            <td><input type="text" th:field="*{height}" /> <p th:if="${#fields.hasErrors('height')}" th:errors="*{height}" ></p></td>
 
         </tr>
         <tr>
             <td><label th:text="Dlgeo" /></td>
-            <td><input type="text" th:field="*{longitude}"/><p th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}" style="color: red">Name Error</p></td>
+            <td><input type="text" th:field="*{longitude}"/><p th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"></p></td>
         </tr>
         <tr>
             <td><label th:text="Szergeo" /></td>
-            <td><input type="text" th:field="*{latitude}" /></td>
+            <td><input type="text" th:field="*{latitude}" /><p th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"></p></td>
         </tr>
         <tr>
             <td><label th:text="Opis" /></td>

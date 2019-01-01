@@ -18,6 +18,10 @@ public class Region {
     @OneToMany(mappedBy = "region", cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     private List<Point> points = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @JoinColumn(name = "group_id")
+    private MountainGroup group;
+
     public Region() {
     }
 
@@ -52,6 +56,14 @@ public class Region {
 
     public void setPoints(List<Point> points) {
         this.points = points;
+    }
+
+    public MountainGroup getGroup() {
+        return group;
+    }
+
+    public void setGroup(MountainGroup group) {
+        this.group = group;
     }
 
     @Override
