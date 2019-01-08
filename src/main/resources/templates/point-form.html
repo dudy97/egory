@@ -61,5 +61,20 @@
         </tr>
     </table>
 </form>
+
+<table>
+    <thead>
+    <tr>
+        <th> Name </th>
+        <th> RouteLength </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="route : ${testRoute}">
+        <td><span th:text="${testRoute.name}"> name </span></td>
+        <td><span th:text="${testRoute.routeLength}"> routeLength </span></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

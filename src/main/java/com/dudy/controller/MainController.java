@@ -2,8 +2,10 @@ package com.dudy.controller;
 
 import com.dudy.entity.Point;
 import com.dudy.entity.Region;
+import com.dudy.entity.Route;
 import com.dudy.repository.PointRepository;
 import com.dudy.repository.RegionRepository;
+import com.dudy.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,9 @@ import java.util.ArrayList;
 @Controller
 @RequestMapping(path = "/demo")
 public class MainController {
+
+    @Autowired
+    private RouteRepository routeRepository;
 
     @Autowired
     private PointRepository pointRepository;
@@ -52,6 +57,11 @@ public String index()
 public String newPoint(Model model) {
     Point thePoint = new Point();
     ArrayList<Region> regions = (ArrayList<Region>) regionRepository.findAll();
+    //ArrayList<Route> routes = (ArrayList<Route>) routeRepository.getRoutesByGroup("Czechowice Dziedzice");
+    Route r = routeRepository.getRoutesTest("Czechowice Dziedzice");
+
+    model.addAttribute("testRoute", r);
+    //model.addAttribute("routes", routes);
     model.addAttribute("regions", regions);
     model.addAttribute("point", thePoint);
     return "point-form";
