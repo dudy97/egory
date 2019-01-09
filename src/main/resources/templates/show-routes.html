@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Egory app</title>
+</head>
+<body>
+<h1>Routes Page</h1>
+<form th:action="@{/demo/processGroup}" method="post">
+<select id="dropOperator", name="groupChosen">
+    <option value="0">Select Group</option>
+    <option th:each="group : ${groups}" th:value="${group.nazwa}" th:text="${group.nazwa}"></option>
+</select>
+    <input type="submit" value="Submit"/>
+</form>
+
+</body>
+</html>
