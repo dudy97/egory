@@ -17,6 +17,8 @@
     </style>
 </head>
 <body>
+<div class="container">
+    <div class="row">
 <h1>Point form</h1>
 <form action="#" th:action="@{/demo/savePoint}" th:object="${point}" method="post">
     <table class="table table-striped" border="1" >
@@ -62,19 +64,8 @@
     </table>
 </form>
 
-<table>
-    <thead>
-    <tr>
-        <th> Name </th>
-        <th> RouteLength </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="route : ${testRoute}">
-        <td><span th:text="${testRoute.name}"> name </span></td>
-        <td><span th:text="${testRoute.routeLength}"> routeLength </span></td>
-    </tr>
-    </tbody>
-</table>
+
+    </div>
+</div>
 </body>
 </html>

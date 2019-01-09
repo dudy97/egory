@@ -17,5 +17,6 @@ public interface RouteRepository extends JpaRepository<Route,Integer>{
     //@Query(value = "SELECT name from Routes r join PointsOnRoute por on r.id=por.idt join Point p on por.idp=p.id join Region reg on p.region_id=reg.id join MountainGroup mg on reg.group_id=mg.id where mg.nazwa=group")
 
     @Query(value = "SELECT * from Route r inner join Punty_Trasy por on r.id=por.idt join Point p on por.idp=p.id join Region reg on p.region_id=reg.id join Mountain_Group mg on reg.group_id=mg.id where mg.nazwa=:groupName", nativeQuery = true)
-    public Route getRoutesTest(@Param("groupName") String groupName);
+    public ArrayList<Route> getRoutesByGroup(@Param("groupName") String groupName);
+
 }

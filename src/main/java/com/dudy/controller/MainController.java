@@ -15,8 +15,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by admin on 12.12.2018.
@@ -46,9 +48,6 @@ public class MainController {
     public String newPoint(Model model) {
         Point thePoint = new Point();
         ArrayList<Region> regions = (ArrayList<Region>) regionRepository.findAll();
-        Route r = routeRepository.getRoutesTest("Czechowice Dziedzice");
-
-        model.addAttribute("testRoute", r);
         model.addAttribute("regions", regions);
         model.addAttribute("point", thePoint);
         return "point-form";
@@ -75,9 +74,12 @@ public class MainController {
         return "show-routes";
     }
     @RequestMapping(value = "/processGroup", method = RequestMethod.POST)
-    public String processRouteForm(@RequestParam() String groupChosen){
-        System.out.println(groupChosen);
-        return "redirect:/demo/routes-page";
+    public String processRouteForm(@RequestParam() String groupChosen, Model model){
+        List<Route> routes = routeRepository.getRoutesByGroup(groupChosen);
+        model.addAttribute("routes", routes);
+        ArrayList<MountainGroup> mountainGroups = (ArrayList<MountainGroup>) mountainGroupRepository.findAll();
+        model.addAttribute("groups", mountainGroups);
+        return "show-routes";
     }
 
 

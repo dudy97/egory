@@ -14,5 +14,23 @@
     <input type="submit" value="Submit"/>
 </form>
 
+<table>
+    <thead>
+    <tr>
+        <th> Name </th>
+        <th> pointsForRoute </th>
+        <th> RouteLength </th>
+        <th> heightDiffrence </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${routes!=null}" th:each="route : ${routes}">
+        <td><span th:text="${route?.name}"> name </span></td>
+        <td><span th:text="${route?.pointsForRoute}"> pointsForRoute </span></td>
+        <td><span th:text="${route?.routeLength}"> routeLength </span></td>
+        <td><span th:text="${route?.heightDiffrence}"> heightDiffrence </span></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
