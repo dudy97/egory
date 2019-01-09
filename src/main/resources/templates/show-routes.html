@@ -3,34 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Egory app</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Routes Page</h1>
-<form th:action="@{/demo/processGroup}" method="post">
-<select id="dropOperator", name="groupChosen">
-    <option value="0">Select Group</option>
-    <option th:each="group : ${groups}" th:value="${group.nazwa}" th:text="${group.nazwa}"></option>
-</select>
-    <input type="submit" value="Submit"/>
-</form>
+<div class="container">
+    <div class="row">
+        <h1>Routes Page</h1>
+        <form th:action="@{/demo/processGroup}" method="post">
+            <select id="dropOperator" , name="groupChosen">
+                <option value="">Select Group</option>
+                <option th:each="group : ${groups}" th:value="${group.nazwa}" th:text="${group.nazwa}"></option>
+            </select>
+            <input type="submit" value="Submit"/>
+        </form>
 
-<table>
-    <thead>
-    <tr>
-        <th> Name </th>
-        <th> pointsForRoute </th>
-        <th> RouteLength </th>
-        <th> heightDiffrence </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${routes!=null}" th:each="route : ${routes}">
-        <td><span th:text="${route?.name}"> name </span></td>
-        <td><span th:text="${route?.pointsForRoute}"> pointsForRoute </span></td>
-        <td><span th:text="${route?.routeLength}"> routeLength </span></td>
-        <td><span th:text="${route?.heightDiffrence}"> heightDiffrence </span></td>
-    </tr>
-    </tbody>
-</table>
+        <h3><p th:text=${groupName}></p></h3>
+
+        <table class="table table-striped" border="1">
+            <thead th:if="${routes!=null}">
+            <tr>
+                <th> Mountain trail</th>
+                <th> Points for route</th>
+                <th> Route length</th>
+                <th> Height diffrence</th>
+                <th> Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${routes!=null}" th:each="route : ${routes}">
+                <td><span th:text="${route?.name}"> name </span></td>
+                <td><span th:text="${route?.pointsForRoute}"> pointsForRoute </span></td>
+                <td><span th:text="${route?.routeLength}"> routeLength </span></td>
+                <td><span th:text="${route?.heightDiffrence}"> heightDiffrence </span></td>
+                <td>
+                    <table>
+                        <tr th:if="${routes!=null}" th:each="point : ${route.points}">
+                            <td><span th:text="${point.name}"> name </span></td>
+                        </tr>
+                    </table>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

@@ -60,7 +60,6 @@ public class MainController {
 
     @RequestMapping(value = "/savePoint", method = RequestMethod.POST)
     public String processForm(@Valid @ModelAttribute Point point, BindingResult errors) {
-        System.out.println(errors.hasErrors());
         if (errors.hasErrors())
             return "point-form";
         pointRepository.save(point);
@@ -76,6 +75,11 @@ public class MainController {
     @RequestMapping(value = "/processGroup", method = RequestMethod.POST)
     public String processRouteForm(@RequestParam() String groupChosen, Model model){
         List<Route> routes = routeRepository.getRoutesByGroup(groupChosen);
+        for(int i=0;i<routes.size();i++){
+            ArrayList<Point> points = (ArrayList<Point>) pointRepository.getPointByRoute(routes.get(i).getId());
+            routes.get(i).setPoints(points);
+        }
+        model.addAttribute("groupName", groupChosen);
         model.addAttribute("routes", routes);
         ArrayList<MountainGroup> mountainGroups = (ArrayList<MountainGroup>) mountainGroupRepository.findAll();
         model.addAttribute("groups", mountainGroups);

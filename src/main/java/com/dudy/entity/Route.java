@@ -25,11 +25,11 @@ public class Route {
     @Column(name="roznica_wysokosci")
     int heightDiffrence;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     @JoinTable(name = "PunktyTrasy",
     joinColumns = @JoinColumn(name="idT"),
     inverseJoinColumns = @JoinColumn(name = "idP"))
-    private List<Point> points = new ArrayList<>();
+    List<Point> points = new ArrayList<>();
 
     public Route() {
     }
