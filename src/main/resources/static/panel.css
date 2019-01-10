@@ -1,0 +1,10 @@
+.container{
+    background-color: #80EF92;
+}
+.row{
+    text-align: center;
+}
+.btn-default{
+    width: 250px;
+    height: 50px;
+}
