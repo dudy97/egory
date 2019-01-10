@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.jws.WebParam;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by admin on 12.12.2018.
@@ -42,6 +44,16 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "index";
+    }
+
+    @RequestMapping(value = "/guide", method = RequestMethod.GET)
+    public String showGuidePanel() {
+        return "guide-panel";
+    }
+
+    @RequestMapping(value = "/customer", method = RequestMethod.GET)
+    public String showCustomerPanel() {
+        return "customer-panel";
     }
 
     @RequestMapping(value = "/new-point", method = RequestMethod.GET)
@@ -75,12 +87,13 @@ public class MainController {
     @RequestMapping(value = "/processGroup", method = RequestMethod.POST)
     public String processRouteForm(@RequestParam() String groupChosen, Model model){
         List<Route> routes = routeRepository.getRoutesByGroup(groupChosen);
+        Set<Route> routeSet = new LinkedHashSet<>(routes);
         for(int i=0;i<routes.size();i++){
             ArrayList<Point> points = (ArrayList<Point>) pointRepository.getPointByRoute(routes.get(i).getId());
             routes.get(i).setPoints(points);
         }
         model.addAttribute("groupName", groupChosen);
-        model.addAttribute("routes", routes);
+        model.addAttribute("routes", routeSet);
         ArrayList<MountainGroup> mountainGroups = (ArrayList<MountainGroup>) mountainGroupRepository.findAll();
         model.addAttribute("groups", mountainGroups);
         return "show-routes";

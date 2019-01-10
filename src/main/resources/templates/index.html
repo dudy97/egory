@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Egory app</title>
+
+    <link rel="stylesheet" th:href="@{/index.css}"/>
+
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -11,11 +14,43 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <h1>Welcome in Egory application</h1>
-        <a href="/demo/new-point">Point</a><br>
-        <a href="/demo/routes-page">Routes</a>
+<div class="container" id="container">
+    <div id="left">
+        <div id="menu">
+            <div class="option"> Strona glowna
+            </div>
+            <div class="option"> Historia
+            </div>
+            <div class="option"> Aktualne informacje
+            </div>
+        </div>
+        <div style="clear:both"> </div>
+    </div>
+    <div class="row" >
+        <div id="text">
+        <h1>Welcome in Egory application</h1><br><br>
+        <a href="/demo/guide" class="btn btn-default btn-lg" role="button" style="margin-bottom: 20px">Guide Panel</a><br>
+        <a href="/demo/customer" class="btn btn-default btn-lg" role="button" style="margin-bottom: 20px">Customer Panel</a><br>
+
+            <br><br>
+            <div id="gotText">
+            <b>Górska Odznaka Turystyczna PTTK (GOT PTTK)</b> – odznaka ustanowiona w 1935 przez Polskie Towarzystwo Tatrzańskie, promująca turystykę górską. Od 1950 kontynuowana przez Polskie Towarzystwo Turystyczno-Krajoznawcze – spadkobiercę i kontynuatora PTT.<br>
+
+        Nadzór nad GOT sprawuje Komisja Turystyki Górskiej Zarządu Głównego PTTK. Kadrą programową odpowiedzialną za GOT są przodownicy turystyki górskiej PTTK.<br><br>
+
+        Zdobywanie odznaki odbywa się na podstawie samodzielnie prowadzonej książeczki, według wzoru określonego przez Komisję Turystyki Górskiej ZG PTTK, w której zapisywany jest dokładny przebieg przebytych tras i punkty należne za poszczególne odcinki.
+
+        Odznakę „W góry” można zdobywać po rozpoczęciu 5. roku życia i do ukończenia 7. roku życia, pozostałe po ukończeniu 7 lat życia. Zdobycie poszczególnych stopni w kategoriach „W góry”, „popularnego” i „małych” związane jest ze zdobyciem określonej ilości punktów. Punkty przydzielane są na podstawie stanowiącej załącznik do regulaminu odznaki punktacji górskich znakowanych szlaków turystycznych Polski lub (jeśli trasa wycieczki nie jest ujęta w spisie) według zasady: 1 punkt za 1 kilometr plus 1 punkt za 100 metrów różnicy wysokości z sumy podejść. Nie wolno powtarzać tras w ramach zdobywania jednego stopnia odznaki, chyba że przejście odbywa się w przeciwnym kierunku.
+
+        Zdobywanie każdej z odznak „dużych” wiąże się z odbyciem dwóch wielodniowych wycieczek, przy czym trasa każdej z nich winna prowadzić przez co najmniej 7 punktów pośrednich, wybranych z listy stanowiącej załącznik do regulaminu odznaki. Punkty pośrednie mogą być wykorzystane tylko raz przy zdobywaniu wszystkich stopni „dużych” odznak.
+
+        Odznakę „Za wytrwałość” w stopniu małym zdobywa posiadacz dużej złotej odznaki wypełniając siedmiokrotnie, a posiadacz małej złotej dziesięciokrotnie wymagania któregokolwiek stopnia małej odznaki GOT. O przyznanie odznaki „Za wytrwałość” w stopniu dużym można ubiegać się po udokumentowaniu dwukrotnego zweryfikowania odznaki „Za wytrwałość” w stopniu małym.
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        Strona zrobiona na potrzeby przedmiotu Projektowanie oprogramowania &copy;Wszelkie prawa zabronione.
     </div>
 </div>
 </body>
