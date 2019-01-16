@@ -12,5 +12,6 @@ import java.util.List;
  */
 public interface PointRepository extends CrudRepository<Point , Integer>{
     @Query(value = "select * from Punty_Trasy pt join Point p on pt.idp=p.id where pt.idt=:theId", nativeQuery = true)
-    public List<Point> getPointByRoute(@Param("theId") int theId);
+    public List<Point> getPointsByRoute(@Param("theId") int theId);
+    Point findByName(String name);
 }
