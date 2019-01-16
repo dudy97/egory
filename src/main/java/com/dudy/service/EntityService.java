@@ -16,4 +16,5 @@ public interface EntityService {
     List<MountainGroup> findAllMountainGroups();
     List<Route> getRouteByGroup(String groupName);
     List<Point> getPointsByRoute(int routeId);
+    List<Point> getPoints();
 }

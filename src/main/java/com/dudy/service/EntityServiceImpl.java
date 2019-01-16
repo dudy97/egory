@@ -53,4 +53,9 @@ public class EntityServiceImpl implements EntityService{
     public List<Point> getPointsByRoute(int routeId) {
         return (List<Point>) pointRepository.getPointsByRoute(routeId);
     }
+
+    @Override
+    public List<Point> getPoints() {
+        return (List<Point>) pointRepository.findAll();
+    }
 }

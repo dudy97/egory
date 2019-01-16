@@ -64,7 +64,7 @@ public class EgoryApplicationTests {
 //	@Test
 //	public void checking_pointsByRoute(){
 //		assertNotNull(pointRepository.getPointsByRoute(99));
-//		assertEquals(new Point("Rysy",2503,23,50,"W Tatrach"),entityService.getPointsByRoute(1));
+//		assertEquals(new Point("Rysy",2503,23,50,"W Tatrach"),entityService.getPointsByRoute(1).get(0));
 //	}
 
 
