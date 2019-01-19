@@ -53,21 +53,11 @@ public class EgoryApplicationTests {
 	}
 
 	@Test
-	public void whenValidName_thenRouteShouldBeFound() {
+	public void testFindByName() {
 		String name = "Słonecznik";
 		Point found = pointRepository.findByName(name);
 
 		assertThat(found.getName())
 				.isEqualTo(name);
 	}
-
-//	@Test
-//	public void checking_pointsByRoute(){
-//		assertNotNull(pointRepository.getPointsByRoute(99));
-//		assertEquals(new Point("Rysy",2503,23,50,"W Tatrach"),entityService.getPointsByRoute(1).get(0));
-//	}
-
-
-
-
 }
