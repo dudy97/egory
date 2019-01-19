@@ -34,7 +34,11 @@
 
             <br><br>
             <div id="gotText">
-            <b>Górska Odznaka Turystyczna PTTK (GOT PTTK)</b> – odznaka ustanowiona w 1935 przez Polskie Towarzystwo Tatrzańskie, promująca turystykę górską. Od 1950 kontynuowana przez Polskie Towarzystwo Turystyczno-Krajoznawcze – spadkobiercę i kontynuatora PTT.<br>
+                <div th:fragment="statement" class="statement"  th:if="${statement}" th:classappend="${statement.getStyleClass()}" xmlns:th="http://www.w3.org/1999/xhtml">
+                    <script>writeCheers()</script>
+                </div>
+
+                <b>Górska Odznaka Turystyczna PTTK (GOT PTTK)</b> – odznaka ustanowiona w 1935 przez Polskie Towarzystwo Tatrzańskie, promująca turystykę górską. Od 1950 kontynuowana przez Polskie Towarzystwo Turystyczno-Krajoznawcze – spadkobiercę i kontynuatora PTT.<br>
 
         Nadzór nad GOT sprawuje Komisja Turystyki Górskiej Zarządu Głównego PTTK. Kadrą programową odpowiedzialną za GOT są przodownicy turystyki górskiej PTTK.<br><br>
 

@@ -10,6 +10,8 @@
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <script type="text/javascript" th:src="@{/write-cheers.js}" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,6 +26,9 @@
         <a href="/demo/new-point" class="btn btn-default btn-lg" role="button" style="margin-bottom: 20px">Add Point</a><br>
         <a href="#" class="btn btn-default btn-lg" role="button">Delete Point</a><br>
         <a href="/" class="btn btn-default btn-lg" role="button" style="margin-left: 800px">Go back</a>
+        <div th:fragment="statement" class="statement"  th:if="${statement}" th:classappend="${statement.getStyleClass()}" xmlns:th="http://www.w3.org/1999/xhtml">
+            <script>writeCheers("confirmation")</script>
+        </div>
     </div>
 </div>
 

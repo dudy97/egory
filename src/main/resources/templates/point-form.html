@@ -7,11 +7,13 @@
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <script src="static/writeCheers.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-        p{
+        p {
             color: red;
         }
     </style>
@@ -19,50 +21,56 @@
 <body>
 <div class="container">
     <div class="row">
-<h1>Point form</h1>
-<form action="#" th:action="@{/demo/savePoint}" th:object="${point}" method="post">
-    <table class="table table-striped" border="1" >
-        <tr>
-            <td><label th:text="Nazwa" /></td>
-            <td><input type="text" th:field="*{name}" /> <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-            </td>
-        </tr>
-        <tr>
-            <td><label th:text="Wysokosc" /></td>
-            <td><input type="text" th:field="*{height}" /> <p th:if="${#fields.hasErrors('height')}" th:errors="*{height}" ></p></td>
+        <h1>Point form</h1>
+        <form action="#" th:action="@{/demo/savePoint}" th:object="${point}" method="post">
+            <table class="table table-striped" border="1">
+                <tr>
+                    <td><label th:text="Nazwa"/></td>
+                    <td><input type="text" th:field="*{name}"/>
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label th:text="Wysokosc"/></td>
+                    <td><input type="text" th:field="*{height}"/>
+                        <p th:if="${#fields.hasErrors('height')}" th:errors="*{height}"></p></td>
 
-        </tr>
-        <tr>
-            <td><label th:text="Dlgeo" /></td>
-            <td><input type="text" th:field="*{longitude}"/><p th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"></p></td>
-        </tr>
-        <tr>
-            <td><label th:text="Szergeo" /></td>
-            <td><input type="text" th:field="*{latitude}" /><p th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"></p></td>
-        </tr>
-        <tr>
-            <td><label th:text="Opis" /></td>
-            <td><input type="text" th:field="*{description}" /></td>
-        </tr>
-        <tr>
-            <td><label th:text="Region" /></td>
-            <td>
-            <select th:field="*{region}" id="dropOperator">
-                <option value="0">Select region</option>
-                <option th:each="region : ${regions}" th:value="${region.id}" th:text="${region.name}"></option>
-            </select>
-            </td>
-        </tr>
-        </tr>
+                </tr>
+                <tr>
+                    <td><label th:text="Dlgeo"/></td>
+                    <td><input type="text" th:field="*{longitude}"/>
+                        <p th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"></p></td>
+                </tr>
+                <tr>
+                    <td><label th:text="Szergeo"/></td>
+                    <td><input type="text" th:field="*{latitude}"/>
+                        <p th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"></p></td>
+                </tr>
+                <tr>
+                    <td><label th:text="Opis"/></td>
+                    <td><input type="text" th:field="*{description}"/></td>
+                </tr>
+                <tr>
+                    <td><label th:text="Region"/></td>
+                    <td>
+                        <select th:field="*{region}" id="dropOperator">
+                            <option value="0">Select region</option>
+                            <option th:each="region : ${regions}" th:value="${region.id}"
+                                    th:text="${region.name}"></option>
+                        </select>
+                    </td>
+                </tr>
+                </tr>
 
-        <tr>
-            <td><input type="submit" value="Submit" class="btn btn-success"/>
-            <input type="reset" value="Reset" class="btn btn-danger"/></td>
-
-
-        </tr>
-    </table>
-</form>
+                <tr>
+                    <td><input type="submit" value="Submit" class="btn btn-success" onclick=writeCheers()/>
+                        <input type="reset" value="Reset" class="btn btn-danger"/></td>
+                </tr>
+            </table>
+        </form>
+        <div th:fragment="statement" class="statement"  th:if="${statement}" th:classappend="${statement.getStyleClass()}" xmlns:th="http://www.w3.org/1999/xhtml">
+            <script>writeCheers("warning")</script>
+        </div>
 
 
     </div>
