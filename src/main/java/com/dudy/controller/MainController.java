@@ -1,9 +1,6 @@
 package com.dudy.controller;
 
-import com.dudy.entity.MountainGroup;
-import com.dudy.entity.Point;
-import com.dudy.entity.Region;
-import com.dudy.entity.Route;
+import com.dudy.entity.*;
 import com.dudy.service.EntityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,11 +55,13 @@ public class MainController {
     }
 
     @RequestMapping(value = "/savePoint", method = RequestMethod.POST)
-    public String processForm(@Valid @ModelAttribute Point point, BindingResult errors) {
-        if (errors.hasErrors())
+    public String processForm(@Valid @ModelAttribute Point point, BindingResult errors, Model model) {
+        if (errors.hasErrors()) {
             return "point-form";
+        }
+        model.addAttribute("statement", new Statement("Powodzenie",Statement.CONFIRMATION));
         entityService.savePoint(point);
-        return "redirect:/";
+        return "guide-panel";
     }
 
     @RequestMapping(value = "/routes-page", method = RequestMethod.GET)
