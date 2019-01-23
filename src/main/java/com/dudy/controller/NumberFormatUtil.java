@@ -5,7 +5,7 @@ import org.springframework.web.bind.WebDataBinder;
 import java.beans.PropertyEditorSupport;
 
 /**
- * Created by admin on 31.12.2018.
+ * Helps to convert fields into double
  */
 public class NumberFormatUtil {
     public static void registerDoubleFormat (WebDataBinder binder) {

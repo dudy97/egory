@@ -8,7 +8,7 @@ import com.dudy.entity.Route;
 import java.util.List;
 
 /**
- * Created by admin on 15.01.2019.
+ * Class which use entity repository
  */
 public interface EntityService {
     public List<Region> findAllRegions();

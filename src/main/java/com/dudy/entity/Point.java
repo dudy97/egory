@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by admin on 12.12.2018.
+ * Entity class of mountain points
  */
 
 @Entity

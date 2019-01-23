@@ -10,12 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by admin on 02.01.2019.
+ * Repository of Route
  */
 
 public interface RouteRepository extends JpaRepository<Route,Integer>{
     //@Query(value = "SELECT name from Routes r join PointsOnRoute por on r.id=por.idt join Point p on por.idp=p.id join Region reg on p.region_id=reg.id join MountainGroup mg on reg.group_id=mg.id where mg.nazwa=group")
 
+    /**
+     * @param groupName Name of the mountain group
+     * @return List of routes which are in particular mountain group
+     */
     @Query(value = "SELECT * from Route r inner join Punty_Trasy por on r.id=por.idt join Point p on por.idp=p.id join Region reg on p.region_id=reg.id join Mountain_Group mg on reg.group_id=mg.id where mg.nazwa=:groupName", nativeQuery = true)
     public ArrayList<Route> getRoutesByGroup(@Param("groupName") String groupName);
 

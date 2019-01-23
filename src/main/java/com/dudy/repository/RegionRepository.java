@@ -5,7 +5,7 @@ import com.dudy.entity.Region;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by admin on 31.12.2018.
+ * CRUD operations on Region
  */
 public interface RegionRepository extends CrudRepository<Region, Integer> {
 }

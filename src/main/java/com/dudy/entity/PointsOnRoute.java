@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by admin on 01.01.2019.
+ * Entity class linking points and routes
  */
 @Entity(name = "PuntyTrasy")
 public class PointsOnRoute implements Serializable{

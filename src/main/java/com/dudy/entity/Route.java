@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by admin on 01.01.2019.
+ * Entity class of routes
  */
 @Entity
 public class Route {

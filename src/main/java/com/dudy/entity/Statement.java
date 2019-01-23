@@ -1,7 +1,7 @@
 package com.dudy.entity;
 
 /**
- * Created by admin on 19.01.2019.
+ * Class used in showing the result of operation
  */
 public class Statement {
     public static final String NAME = "STATEMENT";

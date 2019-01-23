@@ -18,6 +18,11 @@ import java.util.Set;
 /**
  * Created by admin on 12.12.2018.
  */
+
+/**
+ * Main page controller
+ */
+
 @Controller
 @RequestMapping(path = "/demo")
 public class MainController {

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by admin on 29.12.2018.
+ * Entity class of regions
  */
 @Entity
 public class Region {
