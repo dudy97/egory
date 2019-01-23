@@ -57,6 +57,8 @@ public class MainController {
     @RequestMapping(value = "/savePoint", method = RequestMethod.POST)
     public String processForm(@Valid @ModelAttribute Point point, BindingResult errors, Model model) {
         if (errors.hasErrors()) {
+            ArrayList<Region> regions = (ArrayList<Region>) entityService.findAllRegions();
+            model.addAttribute("regions", regions);
             return "point-form";
         }
         model.addAttribute("statement", new Statement("Powodzenie",Statement.CONFIRMATION));
