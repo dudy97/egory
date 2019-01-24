@@ -79,12 +79,17 @@ public class MainController {
     }
     @RequestMapping(value = "/processGroup", method = RequestMethod.POST)
     public String processRouteForm(@RequestParam() String groupChosen, Model model){
+        boolean areRoutesFound;
         List<Route> routes = entityService.getRouteByGroup(groupChosen);
         Set<Route> routeSet = new LinkedHashSet<>(routes);
+
         for(int i=0;i<routes.size();i++){
             ArrayList<Point> points = (ArrayList<Point>) entityService.getPointsByRoute(routes.get(i).getId());
             routes.get(i).setPoints(points);
         }
+        areRoutesFound = routeSet.size()==0;
+
+        model.addAttribute("areRoutesFound",areRoutesFound);
         model.addAttribute("groupName", groupChosen);
         model.addAttribute("routes", routeSet);
         ArrayList<MountainGroup> mountainGroups = (ArrayList<MountainGroup>) entityService.findAllMountainGroups();
