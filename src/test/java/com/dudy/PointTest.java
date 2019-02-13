@@ -23,6 +23,23 @@ public class PointTest {
         point = new Point();
     }
     @Test
+    public void testPoint() throws Exception
+    {
+        String name = "Rysy";
+        int height = 1200;
+        double longitude = 44.4;
+        double latitude = 20.1;
+        String description = "Najwyzszy szczyt w Polsce";
+        Point testPoint = new Point(name, height,longitude,latitude,description);
+
+        assertEquals(name,testPoint.getName());
+        assertEquals(height,testPoint.getHeight());
+        assertEquals(longitude,testPoint.getLongitude(),DELTA);
+        assertEquals(latitude,testPoint.getLatitude(),DELTA);
+        assertEquals(description,testPoint.getDescription());
+
+    }
+    @Test
     public void getHeight() throws Exception
     {
         int height = 2500;
